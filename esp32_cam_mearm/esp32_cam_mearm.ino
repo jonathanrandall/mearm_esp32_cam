@@ -11,7 +11,7 @@ pca9685: 0 to the right servo
          4 to the bottom servo
          14 to the claw
          15 to the left servo
-         sda to pin 
+         
 
 */
 
@@ -24,9 +24,12 @@ pca9685: 0 to the right servo
 #include "soc/soc.h"           // disable brownout problems
 #include "soc/rtc_cntl_reg.h"  // disable brownout problems
 #include "esp_http_server.h"
+
+//i2c for pwm driver
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
 
+//oled
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
@@ -380,7 +383,9 @@ void setup() {
   WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);  //disable brownout detector
   Serial.begin(115200);
   I2CPWM.begin(SDA_PIN, SCL_PIN, 100000);
+  //pcs9685
   pwm.begin();
+  //oled
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  // Address 0x3C for 128x64
   I2CPWM.begin(SDA_PIN, SCL_PIN, 100000);
   pwm.setPWMFreq(50);  // Set the PWM frequency to 50Hz
