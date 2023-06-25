@@ -18,3 +18,30 @@ Random Nerds I2C additional bus:
 https://randomnerdtutorials.com/esp32-i2c-communication-arduino-ide/ <br>
 Robojax PCA9685 tutorial:
 http://robojax.com/learn/arduino/?vid=robojax_PCA9685-V2
+
+
+__Adafruit PWM servo library update__ <br>
+I have made the following change to the Adafruit_PWMServoDriver.h file <br>
+From:
+```c
+Adafruit_PWMServoDriver(const uint8_t addr, TwoWire &i2c);
+```
+To:
+```c
+Adafruit_PWMServoDriver(const uint8_t addr, TwoWire *i2c);
+```
+
+And the  Adafruit_PWMServoDriver.cpp file <br>
+From:
+```c
+Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(const uint8_t addr,
+                                                 TwoWire &i2c)
+    : _i2caddr(addr), _i2c(&i2c) {}
+```
+To:
+```c
+Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(const uint8_t addr,
+                                                 TwoWire *i2c)
+    : _i2caddr(addr), _i2c(i2c) {}
+```
+
