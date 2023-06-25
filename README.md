@@ -2,6 +2,8 @@
  esp32 cam for mearm
 In this project, I connect an esp32-cam to a mearm robotic arm, so I can control the arm from a web interface. I use I2C to connect the esp32-cam to a pca9685 PWM driver, and use the driver to control the robot arm. I also add an OLED screen to the I2C bus.
 
+__video link__ <br>
+https://youtu.be/ukeri1_q-RQ
 
 __Equipment__
 1. MEARM robot kit: https://shop.mearm.com/
